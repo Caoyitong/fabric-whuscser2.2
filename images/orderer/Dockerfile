@@ -21,6 +21,7 @@ WORKDIR $GOPATH/src/github.com/hyperledger/fabric
 
 FROM golang as orderer
 ARG GO_TAGS
+RUN go env -w GOPROXY=https://goproxy.cn,direct
 RUN make orderer GO_TAGS=${GO_TAGS}
 
 FROM base

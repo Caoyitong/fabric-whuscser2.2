@@ -22,6 +22,7 @@ WORKDIR $GOPATH/src/github.com/hyperledger/fabric
 
 FROM golang as peer
 ARG GO_TAGS
+RUN go env -w GOPROXY=https://goproxy.cn,direct
 RUN make peer GO_TAGS=${GO_TAGS}
 
 FROM peer-base

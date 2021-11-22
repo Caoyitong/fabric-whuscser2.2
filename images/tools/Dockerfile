@@ -17,6 +17,7 @@ ADD . $GOPATH/src/github.com/hyperledger/fabric
 WORKDIR $GOPATH/src/github.com/hyperledger/fabric
 
 FROM golang as tools
+RUN go env -w GOPROXY=https://goproxy.cn,direct
 RUN make configtxgen configtxlator cryptogen peer discover idemixgen
 
 FROM golang:${GO_VER}-alpine
